@@ -33,14 +33,15 @@
         }
         
         .chibi {
-            position: absolute;
-            width: 70px;
-            height: 90px;
-            pointer-events: auto;
+            width: 300px;           /* Adjust this to change character size */
+            height: 300px;
+            position: fixed;
+            bottom: 20px;
+            background-repeat: no-repeat;
+            background-size: 300% 100%; /* This "zooms" the sheet so 1 frame fits the box */
+            z-index: 1000;
+            transition: transform 0.5s;
             cursor: pointer;
-            transition: transform 0.3s;
-            z-index: 101;
-            bottom: 0;
         }
         
         .chibi:hover {
@@ -100,11 +101,11 @@
         }
         
         .boy .chibi-body {
-            background-color: #8D6E63;
+            background-color: #FFCCBC;
         }
         
         .boy .chibi-head {
-            background-color: #FFE0B2;
+            background-color: #59473F;
         }
         
         .boy .chibi-leg {
@@ -116,11 +117,11 @@
         }
         
         .girl .chibi-body {
-            background-color: #D7CCC8;
+            background-color: #FFCCBC;
         }
         
         .girl .chibi-head {
-            background-color: #FFE0B2;
+            background-color: #59473F;
         }
         
         .girl .chibi-leg {
@@ -712,7 +713,7 @@
         <!-- Page 1: Cover -->
         <div class="page active" id="page1">
             <div class="tape" style="top: 20px; left: 50px;"></div>
-            <div class="heart-sticker" style="top: 30px; right: 60px;"></div>
+            <div class="heart-sticker" style="top: 50px; right: 15px;"></div>
             
             <div class="cover-page">
                 <div class="cover-title">
@@ -736,7 +737,7 @@
         
         <!-- Page 2: Love Letter -->
         <div class="page" id="page2">
-            <div class="tape" style="top: 40px; right: 40px;"></div>
+            <div class="tape" style="top: 150px; right: 50px;"></div>
             
             <div class="page-title">
                 <h2><i class="fas fa-envelope"></i> A Love Letter Just For You</h2>
@@ -764,7 +765,6 @@
         
         <!-- Page 3: Photos & Memories -->
         <div class="page" id="page3">
-            <div class="tape" style="top: 30px; left: 30%;"></div>
             
             <div class="page-title">
                 <h2><i class="fas fa-images"></i> Our Special Memories</h2>
@@ -854,9 +854,7 @@
         </div>
         
         <!-- Page 5: Postcard -->
-        <div class="page" id="page5">
-            <div class="tape" style="bottom: 40px; left: 40px;"></div>
-            
+        <div class="page" id="page5">            
             <div class="page-title">
                 <h2><i class="fas fa-stamp"></i> Valentine's Postcard</h2>
             </div>
@@ -946,171 +944,91 @@
         // Create cute chibi characters that run at the bottom of the screen
         function createChibiCharacters() {
             const container = document.getElementById('chibi-container');
-            const chibiCount = 8; // 4 boys and 4 girls
+            const chibiCount = 2; // 4 boys and 4 girls
+            const characters = [
+                { type: 'boy', right: 'Images/right.png', left: 'Images/left.png', frames: 3 }, 
+                { type: 'girl', right: 'Images/right-girl.png', left: 'Images/left-girl.png', frames: 3 }
+            ];
             
-            for (let i = 0; i < chibiCount; i++) {
+            for (let i = 0; i < 2; i++) {
+                const config = characters[i % 2];
                 const chibi = document.createElement('div');
-                chibi.className = `chibi ${i % 2 === 0 ? 'boy' : 'girl'}`;
+                chibi.className = `chibi ${config.type}`;
                 
-                // Random starting position at bottom
-                const left = Math.random() * 90;
-                
-                chibi.style.left = `${left}%`;
-                
-                // Create chibi parts
-                const body = document.createElement('div');
-                body.className = 'chibi-body';
-                chibi.appendChild(body);
-                
-                const head = document.createElement('div');
-                head.className = 'chibi-head';
-                chibi.appendChild(head);
-                
-                // Eyes
-                const leftEye = document.createElement('div');
-                leftEye.className = 'chibi-eye';
-                leftEye.style.left = '12px';
-                head.appendChild(leftEye);
-                
-                const rightEye = document.createElement('div');
-                rightEye.className = 'chibi-eye';
-                rightEye.style.right = '12px';
-                head.appendChild(rightEye);
-                
-                // Blush
-                const leftBlush = document.createElement('div');
-                leftBlush.className = 'chibi-blush';
-                leftBlush.style.left = '5px';
-                head.appendChild(leftBlush);
-                
-                const rightBlush = document.createElement('div');
-                rightBlush.className = 'chibi-blush';
-                rightBlush.style.right = '5px';
-                head.appendChild(rightBlush);
-                
-                // Arms
-                const leftArm = document.createElement('div');
-                leftArm.className = 'chibi-arm';
-                leftArm.style.left = '-15px';
-                leftArm.style.transform = 'rotate(20deg)';
-                chibi.appendChild(leftArm);
-                
-                const rightArm = document.createElement('div');
-                rightArm.className = 'chibi-arm';
-                rightArm.style.right = '-15px';
-                rightArm.style.transform = 'rotate(-20deg)';
-                chibi.appendChild(rightArm);
-                
-                // Legs
-                const leftLeg = document.createElement('div');
-                leftLeg.className = 'chibi-leg';
-                leftLeg.style.left = '15px';
-                chibi.appendChild(leftLeg);
-                
-                const rightLeg = document.createElement('div');
-                rightLeg.className = 'chibi-leg';
-                rightLeg.style.right = '15px';
-                chibi.appendChild(rightLeg);
-                
-                // Add bow for girl chibis
-                if (i % 2 !== 0) {
-                    const bow = document.createElement('div');
-                    bow.className = 'chibi-bow';
-                    head.appendChild(bow);
-                }
+                // Random starting position
+                chibi.style.left = `${Math.random() * 90}%`;
+                chibi.style.bottom = '20px';
+                chibi.style.width = '100px';  // Adjust based on sprite size
+                chibi.style.height = '120px'; // Adjust based on sprite size
+                chibi.style.position = 'fixed';
+                chibi.style.zIndex = '100';
+                chibi.style.backgroundSize = '300% auto'; // Assuming 3 frames per row
                 
                 container.appendChild(chibi);
-                
-                // Make chibi run back and forth
-                animateChibi(chibi);
+                animateChibi(chibi, config);
             }
         }
         
         // Animate chibi to run back and forth at the bottom
         function animateChibi(chibi) {
-            let direction = Math.random() > 0.5 ? 1 : -1; // 1 for right, -1 for left
-            let speed = 1 + Math.random() * 2; // Random speed
-            let moving = true;
-            
-            function move() {
-                if (!moving) return;
-                
-                const currentLeft = parseFloat(chibi.style.left) || 0;
-                const chibiWidth = 70;
-                const containerWidth = window.innerWidth;
-                
-                // Calculate new position
-                let newLeft = currentLeft + direction * speed;
-                
-                // Reverse direction if hitting edges
-                if (newLeft <= 0) {
-                    newLeft = 0;
-                    direction = 1; // Go right
-                    chibi.style.transform = 'scaleX(1)'; // Face right
-                } else if (newLeft >= 100 - (chibiWidth / containerWidth * 100)) {
-                    newLeft = 100 - (chibiWidth / containerWidth * 100);
-                    direction = -1; // Go left
-                    chibi.style.transform = 'scaleX(-1)'; // Face left
+            for (let i = 0; i < 2; i++) {
+                    const config = configs[i];
+                    const chibi = document.createElement('div');
+                    chibi.className = `chibi ${config.type}`;
+                    chibi.style.left = `${20 + (i * 40)}%`; // Space them out
+                    
+                    container.appendChild(chibi);
+                    animateChibi(chibi, config);
                 }
-                
-                chibi.style.left = `${newLeft}%`;
-                
-                // Add bobbing animation
-                const bob = Math.sin(Date.now() / 200 + chibi.id) * 5;
-                chibi.style.bottom = `${bob}px`;
-                
-                requestAnimationFrame(move);
             }
-            
-            // Start animation
-            move();
-            
-            // Make chibi interactive
-            chibi.addEventListener('click', function() {
-                // Make chibi jump
-                chibi.style.transition = 'bottom 0.3s';
-                chibi.style.bottom = '50px';
+
+            function animateChibi(chibi, config) {
+                let direction = 1; // 1 for right, -1 for left
+                let speed = 1.5;
+                let moving = true;
+                let frame = 0;
                 
-                setTimeout(() => {
-                    chibi.style.transition = 'bottom 0.3s';
-                    chibi.style.bottom = '0px';
-                }, 300);
-                
-                // Create heart animation
-                const heart = document.createElement('div');
-                heart.innerHTML = '<i class="fas fa-heart"></i>';
-                heart.style.position = 'absolute';
-                heart.style.color = '#D32F2F';
-                heart.style.fontSize = '20px';
-                heart.style.left = '50%';
-                heart.style.top = '0';
-                heart.style.transform = 'translateX(-50%)';
-                heart.style.zIndex = '102';
-                heart.style.pointerEvents = 'none';
-                heart.style.animation = 'heartFloatUp 1s ease-out forwards';
-                
-                chibi.appendChild(heart);
-                
-                // Remove heart after animation
-                setTimeout(() => {
-                    if (heart.parentNode) {
-                        heart.parentNode.removeChild(heart);
+                // This function runs the "Walking" animation cycle
+                function updateFrame() {
+                    if (moving) {
+                        frame = (frame + 1) % 3; // Cycle 0, 1, 2
+                        
+                        // Each column is 50% of the remaining space in a 3-column setup
+                        // 0% = Col 1, 50% = Col 2, 100% = Col 3
+                        let xPos = frame * 50; 
+                        chibi.style.backgroundPosition = `${xPos}% 0%`; 
                     }
-                }, 1000);
-            });
-            
-            // Pause when hovering
-            chibi.addEventListener('mouseenter', function() {
-                moving = false;
-                chibi.style.transform += ' scale(1.2)';
-            });
-            
-            chibi.addEventListener('mouseleave', function() {
-                moving = true;
-                chibi.style.transform = chibi.style.transform.replace(' scale(1.2)', '');
-                move(); // Restart animation
-            });
-        }
+                }
+
+                // This function moves the character across the screen
+                function move() {
+                    if (!moving) {
+                        requestAnimationFrame(move);
+                        return;
+                    }
+
+                    let currentLeft = parseFloat(chibi.style.left) || 0;
+                    let newLeft = currentLeft + (direction * (speed / window.innerWidth) * 100);
+
+                    // Change image based on direction
+                    chibi.style.backgroundImage = `url('${direction === 1 ? config.right : config.left}')`;
+
+                    // Bounce off walls
+                    if (newLeft <= 0) direction = 1;
+                    if (newLeft >= 90) direction = -1;
+
+                    chibi.style.left = `${newLeft}%`;
+                    requestAnimationFrame(move);
+                }
+
+                // Start the loops
+                setInterval(updateFrame, 150); // Change walking pose every 150ms
+                requestAnimationFrame(move);   // Move smoothly
+
+                // Interaction: Pause on hover
+                chibi.addEventListener('mouseenter', () => moving = false);
+                chibi.addEventListener('mouseleave', () => moving = true);
+                    }
         
         // Page navigation
         const navButtons = document.querySelectorAll('.nav-btn');
