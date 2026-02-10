@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>My Valentine's Love Letter</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -65,158 +66,119 @@
             transform: scale(1.1);
         }
         
-        .chibi-body {
-            width: 50px;
-            height: 60px;
-            position: absolute;
-            bottom: 0;
-            left: 10px;
-            border-radius: 50% 50% 40% 40%;
-        }
-        
-        .chibi-head {
-            width: 45px;
-            height: 45px;
-            position: absolute;
-            bottom: 50px;
-            left: 12px;
-            border-radius: 50%;
-        }
-        
-        .chibi-eye {
-            width: 7px;
-            height: 7px;
-            background-color: #000;
-            border-radius: 50%;
-            position: absolute;
-            top: 18px;
-        }
-        
-        .chibi-blush {
-            width: 8px;
-            height: 4px;
-            background-color: #FF8A8A;
-            border-radius: 50%;
-            position: absolute;
-            top: 22px;
-        }
-        
-        .chibi-arm {
-            width: 25px;
-            height: 8px;
-            position: absolute;
-            bottom: 30px;
-            border-radius: 4px;
-        }
-        
-        .chibi-leg {
-            width: 12px;
-            height: 20px;
-            position: absolute;
-            bottom: 0;
-            border-radius: 40% 40% 0 0;
-        }
-        
-        .boy .chibi-body {
-            background-color: #FFCCBC;
-        }
-        
-        .boy .chibi-head {
-            background-color: #59473F;
-        }
-        
-        .boy .chibi-leg {
-            background-color: #5D4037;
-        }
-        
-        .boy .chibi-arm {
-            background-color: #8D6E63;
-        }
-        
-        .girl .chibi-body {
-            background-color: #FFCCBC;
-        }
-        
-        .girl .chibi-head {
-            background-color: #59473F;
-        }
-        
-        .girl .chibi-leg {
-            background-color: #BCAAA4;
-        }
-        
-        .girl .chibi-arm {
-            background-color: #D7CCC8;
-        }
-        
-        .girl .chibi-bow {
-            width: 18px;
-            height: 12px;
-            background-color: #D32F2F;
-            position: absolute;
-            top: -4px;
-            left: 13px;
-            border-radius: 50%;
-        }
-        
-        .girl .chibi-bow:before, .girl .chibi-bow:after {
-            content: '';
-            width: 12px;
-            height: 12px;
-            background-color: #D32F2F;
-            border-radius: 50%;
-            position: absolute;
-            top: 6px;
-        }
-        
-        .girl .chibi-bow:before {
-            left: -8px;
-        }
-        
-        .girl .chibi-bow:after {
-            right: -8px;
-        }
         
         /* Header */
         header {
-            background: linear-gradient(to right, #D32F2F, #F44336);
-            color: #FFFCF5;
+            background: transparent; /* Remove the red gradient background */
+            color: #D32F2F; /* Change text color to match the Valentine's theme */
             text-align: center;
-            padding: 25px 20px;
+            padding: 40px 20px 30px; /* Adjust padding */
             position: relative;
             z-index: 50;
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
-            border-bottom: 5px solid #8D6E63;
+            /* Remove the box-shadow and border-bottom */
+            box-shadow: none;
+            border-bottom: none;
+        }
+
+        h1 {
+            font-size: 3rem; /* Slightly larger for emphasis */
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.8); /* White shadow for better visibility */
+            letter-spacing: 2px; /* Slightly more spacing */
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #8D6E63; /* Darker color for subtitle */
+            font-style: italic;
+            font-weight: 500;
+            background-color: rgba(255, 252, 245, 0.7); /* Semi-transparent background for readability */
+            padding: 8px 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px); /* Adds a slight blur effect for modern browsers */
+        }
+
+        /* Adjust page navigation to match the new header */
+        .page-nav {
+            background-color: rgba(255, 235, 238, 0.9); /* Semi-transparent */
+            backdrop-filter: blur(5px); /* Blur effect for modern browsers */
+            border-bottom: 2px solid #D32F2F;
+        }
+        @media (max-width: 768px) {
+        header {
+            padding: 30px 15px 20px;
         }
         
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 5px;
-            text-shadow: 2px 2px 0 #8D6E63;
-            letter-spacing: 1px;
+            font-size: 2.2rem !important;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.9);
         }
         
         .subtitle {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            color: #FFCCBC;
-            font-style: italic;
+            font-size: 1.1rem;
+            padding: 6px 12px;
         }
-        
-        /* Navigation */
-        .page-nav {
-            display: flex;
-            justify-content: center;
-            background-color: #FFEBEE;
-            padding: 15px;
-            border-bottom: 3px solid #D32F2F;
-            position: sticky;
-            top: 0;
-            z-index: 40;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Add a subtle decorative element to the header */
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 4px;
+        background-color: #D32F2F;
+        border-radius: 0 0 5px 5px;
+    }
+
+    /* Optional: Add floating hearts around the header */
+    .header-hearts {
+        position: absolute;
+        top: 20px;
+        width: 100%;
+        left: 10px;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .header-hearts i {
+        position: absolute;
+        color: #D32F2F;
+        opacity: 0.3;
+        animation: floatHeart 4s infinite ease-in-out;
+    }
+
+    .header-hearts i:nth-child(1) {
+        left: 10%;
+        top: 10px;
+        animation-delay: 0s;
+    }
+
+    .header-hearts i:nth-child(2) {
+        right: 15%;
+        top: 30px;
+        animation-delay: 1s;
+    }
+
+    .header-hearts i:nth-child(3) {
+        left: 20%;
+        top: 50px;
+        animation-delay: 2s;
+    }
+
+    @keyframes floatHeart {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
         }
-        
+        50% {
+            transform: translateY(-10px) rotate(10deg);
+        }
+    }
         .page-nav button {
             background-color: #FFFCF5;
             border: 2px solid #D32F2F;
@@ -388,7 +350,8 @@
             margin: 0 auto;
             line-height: 1.8;
             font-size: 1.2rem;
-            color: #5D4037;
+            color: #5D4037; /* Ensure text is dark enough */
+            font-weight: 500; /* Slightly bolder for readability */
         }
         
         .letter-content p {
@@ -661,47 +624,285 @@
             z-index: 30;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            .page {
-                padding: 25px;
-                min-height: 500px;
-            }
-            
-            .cover-title {
-                font-size: 2.5rem;
-            }
-            
-            .media-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            
-            .page-nav button {
-                width: 40px;
-                height: 40px;
-                padding: 5px;
-                font-size: 1rem;
-            }
-            
-            .chibi {
-                width: 60px;
-                height: 75px;
-            }
+        body {
+            font-size: 16px;
+            line-height: 1.6;
         }
         
-        @media (max-width: 480px) {
-            .media-grid {
-                grid-template-columns: 1fr;
+        .page {
+            padding: 20px 15px !important;
+            min-height: auto;
+            margin: 15px auto;
+            border-width: 8px;
+        }
+        
+        .cover-title {
+            font-size: 2rem !important;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+        
+        .cover-subtitle {
+            font-size: 1.2rem !important;
+            margin-bottom: 25px;
+        }
+        
+        .cover-image {
+            width: 200px !important;
+            height: 200px !important;
+            margin-bottom: 20px;
+        }
+        
+        .page-title h2 {
+            font-size: 1.8rem !important;
+            padding-bottom: 10px;
+        }
+        
+        .page-nav {
+            padding: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            justify-content: flex-start;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .page-nav button {
+            width: 40px !important;
+            height: 40px !important;
+            font-size: 1rem !important;
+            margin: 0 3px;
+            flex-shrink: 0;
+        }
+        
+        .media-grid {
+            grid-template-columns: 1fr !important;
+            gap: 15px !important;
+        }
+        
+        .media-item {
+            height: 200px !important;
+        }
+        
+        .song-player {
+            padding: 20px 15px !important;
+        }
+        
+        .album-art {
+            width: 180px !important;
+            height: 180px !important;
+        }
+        
+        .postcard {
+            padding: 25px 15px !important;
+            border-width: 10px !important;
+        }
+        
+        .postcard h2 {
+            font-size: 1.8rem !important;
+        }
+        
+        .postcard-message {
+            font-size: 1.1rem !important;
+            line-height: 1.6;
+        }
+        
+        .final-message {
+            font-size: 1.3rem !important;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+        
+        .final-heart {
+            font-size: 3.5rem !important;
+        }
+        
+        /* Fix header for mobile */
+        header {
+            padding: 20px 15px;
+        }
+        
+        h1 {
+            font-size: 1.8rem !important;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            padding: 0 10px;
+        }
+        
+        /* Improve letter readability on mobile */
+        .letter-content {
+            padding: 20px 15px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .signature {
+            font-size: 1.6rem;
+        }
+        
+        /* Adjust chibi characters for mobile */
+        #chibi-container {
+            height: 80px;
+        }
+        
+        .chibi {
+            width: 60px !important;
+            height: 75px !important;
+            bottom: 10px;
+        }
+        
+        /* Improve button sizes for touch */
+        .next-btn {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+        
+        .player-btn {
+            width: 45px !important;
+            height: 45px !important;
+            font-size: 1.1rem;
+        }
+        
+        /* Improve video player on mobile */
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .video-item {
+            padding: 15px;
+        }
+        
+        .video-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 480px) {
+        .scrapbook-container {
+            padding: 0 10px;
+        }
+        
+        .page {
+            padding: 15px 10px !important;
+            border-width: 6px;
+        }
+        
+        .cover-title {
+            font-size: 1.8rem !important;
+        }
+        
+        .cover-subtitle {
+            font-size: 1rem !important;
+        }
+        
+        .cover-image {
+            width: 180px !important;
+            height: 180px !important;
+        }
+        
+        .page-title h2 {
+            font-size: 1.5rem !important;
+        }
+        
+        /* Improve text contrast for very small screens */
+        .letter-content,
+        .final-message,
+        .postcard-message {
+            color: #4E342E; /* Darker brown for better contrast */
+        }
+        
+        /* Adjust footer */
+        footer {
+            padding: 20px 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Remove some decorative elements on very small screens */
+        .tape, .heart-sticker {
+            display: none;
+        }
+    }
+
+    /* Improve touch targets for mobile */
+    button, .nav-btn, .next-btn, .player-btn {
+        min-height: 44px; /* Minimum touch target size */
+    }
+
+    /* Prevent text size adjustment on mobile */
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    /* Improve scrolling on mobile */
+    .scrapbook-container {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Add safe area insets for modern phones */
+    @supports (padding: max(0px)) {
+        .scrapbook-container {
+            padding-left: max(20px, env(safe-area-inset-left));
+            padding-right: max(20px, env(safe-area-inset-right));
+        }
+        
+        footer {
+            padding-bottom: max(25px, env(safe-area-inset-bottom));
+        }
+    }
+
+    /* Improve visibility of interactive elements */
+    .nav-btn.active,
+    .next-btn:hover,
+    .player-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Add subtle animation to improve engagement */
+    @media (prefers-reduced-motion: no-preference) {
+        .page.active {
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .page {
-                padding: 20px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
+    }
+
+    /* Improve text readability on all backgrounds */
+    .letter-content,
+    .final-message,
+    .postcard-message,
+    .lyrics-box,
+    .media-caption {
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+    }
+
+    /* Adjust chibi animation for mobile */
+    @media (max-width: 768px) {
+        .chibi {
+            transition: transform 0.3s;
+        }
+        
+        .chibi:hover {
+            transform: scale(1.05);
+        }
+}
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -710,7 +911,7 @@
     <div id="chibi-container"></div>
     
     <header>
-        <h1><i class="fas fa-heart"></i> My Valentine's Love Letter <i class="fas fa-heart"></i></h1>
+        <h1><i class="fas fa-heart"></i> My Valentine <i class="fas fa-heart"></i></h1>
         <p class="subtitle">A digital scrapbook of love and memories</p>
     </header>
     
@@ -791,28 +992,27 @@
                 <div class="media-grid">
                     <!-- Photo 1 -->
                     <div class="media-item">
-                        <img src="https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Walking together">
-                        <div class="media-caption">Walking in the park at sunset</div>
+                        <img src="Images\first-out.jpeg" alt="First outing together">
+                        <div class="media-caption">Night Cafe Meet!!</div>
                     </div>
                     
                     <!-- Photo 2 -->
                     <div class="media-item">
-                        <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Laughing together">
+                        <img src="Images\random.jpeg" alt="Laughing together">
                         <div class="media-caption">That time we couldn't stop laughing</div>
                     </div>
                     
                     <!-- Video 1 -->
                     <div class="media-item">
-                        <video controls poster="https://images.unsplash.com/photo-1518568508383-6a72e8006f52?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-couple-looking-at-the-sunset-3446-large.mp4" type="video/mp4">
+                        <video controls poster="Images\video.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-                        <div class="media-caption">Our sunset moment</div>
+                        <div class="media-caption">Moments in the day!!</div>
                     </div>
                     
                     <!-- Photo 4 -->
                     <div class="media-item">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Celebration">
+                        <img src="Images/krauta.jpeg" alt="Celebration">
                         <div class="media-caption">Celebrating together</div>
                     </div>
                 </div>
@@ -895,37 +1095,8 @@
             </div>
         </div>
         
-        <!-- Page 6: Video Messages -->
+        <!-- Page 6: Final Page -->
         <div class="page" id="page6">
-            <div class="tape" style="top: 30px; right: 30px;"></div>
-            
-            <div class="page-title">
-                <h2><i class="fas fa-video"></i> Video Messages</h2>
-            </div>
-            
-            <div class="video-messages">
-                <div class="video-container">
-                    <div class="video-item">
-                        <h3>Message 1: Why I Love You</h3>
-                        <video controls width="100%" poster="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-holding-a-heart-shaped-hole-39887-large.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    
-                    <div class="video-item">
-                        <h3>Message 2: Our Future Together</h3>
-                        <video controls width="100%" poster="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-holding-a-red-heart-39785-large.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Page 7: Final Page -->
-        <div class="page" id="page7">
             <div class="heart-sticker" style="bottom: 50px; right: 50px;"></div>
             
             <div class="page-title">
@@ -1129,6 +1300,39 @@
         stopBtn.addEventListener('click', function() {
             loveSong.pause();
             loveSong.currentTime = 0;
+        });
+
+        // Add touch event listeners for better mobile interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prevent zoom on double-tap
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function(event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+            
+            // Improve button feedback on touch devices
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                button.addEventListener('touchend', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Adjust chibi animation for mobile performance
+            if (window.innerWidth <= 768) {
+                const chibis = document.querySelectorAll('.chibi');
+                chibis.forEach(chibi => {
+                    chibi.style.transition = 'transform 0.2s';
+                });
+            }
         });
         
         // Initialize the page
