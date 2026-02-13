@@ -1,0 +1,396 @@
+
+
+    /* floating hearts background */
+    .heart-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart-bg i {
+      position: absolute;
+      color: rgba(255, 120, 150, 0.2);
+      font-size: 24px;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+      50% { transform: translateY(-30px) rotate(10deg); opacity: 0.6; }
+      100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+    }
+
+    /* main valentine card player */
+    .player-card {
+      background: rgba(255, 250, 245, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 48px 48px 48px 48px;
+      box-shadow: 0 25px 40px -10px rgba(220, 80, 120, 0.25),
+                  inset 0 5px 10px rgba(255, 255, 255, 0.6);
+      width: 100%;
+      max-width: 460px;
+      padding: 30px 28px;
+      border: 2px solid rgba(255, 220, 220, 0.7);
+      position: relative;
+      z-index: 10;
+      transition: 0.2s;
+    }
+
+    /* kawaii decoration */
+    .candy-stripe {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      width: 70px;
+      height: 20px;
+      background: repeating-linear-gradient(45deg, #ff9a9e, #ff9a9e 8px, #ffc0cb 8px, #ffc0cb 16px);
+      border-radius: 40px;
+      opacity: 0.5;
+      transform: rotate(-12deg);
+      z-index: 0;
+    }
+
+    .candy-stripe.right {
+      left: auto;
+      right: 30px;
+      top: 25px;
+      transform: rotate(8deg);
+      width: 50px;
+    }
+
+    /* header — bear + title */
+    .player-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .bear-avatar {
+      background: #ffb7c5;
+      border-radius: 60% 40% 50% 50% / 45% 50% 40% 55%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 0 #e07a8a, 0 12px 25px #ffa5aa;
+      border: 3px solid white;
+    }
+
+    .bear-avatar i {
+      font-size: 36px;
+      color: #6b4e4e;
+      text-shadow: 2px 4px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    .valentine-text {
+      text-align: right;
+    }
+
+    .valentine-text h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 36px;
+      font-weight: 700;
+      color: #d44a5e;
+      line-height: 1;
+      text-shadow: 3px 3px 0 #ffe0e5;
+      letter-spacing: -0.5px;
+    }
+
+    .valentine-text p {
+      font-size: 14px;
+      background: #ffe9ef;
+      padding: 5px 14px;
+      border-radius: 50px;
+      display: inline-block;
+      color: #b3445c;
+      font-weight: 600;
+      box-shadow: inset 0 2px 5px rgba(255, 215, 215, 0.8);
+      margin-top: 5px;
+    }
+
+    /* album art + love disc */
+    .album-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0 20px;
+    }
+
+    .vinyl-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .vinyl {
+      width: 170px;
+      height: 170px;
+      background: radial-gradient(circle at 30% 30%, #ffe5eb, #f8b0c0);
+      border-radius: 50%;
+      box-shadow: 0 10px 20px rgba(180, 70, 100, 0.3), inset 0 -5px 15px rgba(100, 40, 50, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 8px solid #ffe7f0;
+      outline: 2px dashed #ff9eb5;
+      outline-offset: 6px;
+      transition: 0.3s ease;
+    }
+
+    .heart-center {
+      width: 60px;
+      height: 60px;
+      background: #ff4d6d;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 6px rgba(255, 200, 210, 0.7), 0 5px 15px #ff1e4d;
+      border: 2px solid white;
+    }
+
+    .heart-center i {
+      font-size: 36px;
+      color: white;
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.1));
+    }
+
+    .rotating {
+      animation: spin 6s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .song-info {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .song-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #63212e;
+      font-family: 'Caveat', cursive;
+      letter-spacing: 1px;
+      background: rgba(255, 255, 240, 0.7);
+      padding: 0 20px;
+      border-radius: 40px;
+      display: inline-block;
+      box-shadow: inset 0 -1px 5px #ffe2d4;
+      line-height: 1.4;
+    }
+
+    .artist-name {
+      font-size: 16px;
+      color: #a14250;
+      margin-top: 6px;
+      font-weight: 600;
+      background: #ffeaee;
+      padding: 4px 18px;
+      border-radius: 50px;
+      display: inline-block;
+      border: 1px solid #ffb6c1;
+    }
+
+    /* progress + time */
+    .progress-section {
+      margin: 28px 0 16px;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #813946;
+      font-weight: 600;
+      margin-bottom: 6px;
+      padding: 0 6px;
+    }
+
+    .progress-bar-bg {
+      background: #ffe0e5;
+      height: 12px;
+      border-radius: 30px;
+      box-shadow: inset 0 2px 6px rgba(210, 120, 130, 0.3);
+      border: 1px solid white;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #ff7a9e, #ff4f6b);
+      border-radius: 30px;
+      position: relative;
+      box-shadow: 0 0 12px #ff809a;
+      transition: width 0.05s;
+    }
+
+    .progress-fill::after {
+      content: "❤️";
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      font-size: 20px;
+      filter: drop-shadow(0 4px 4px #ffa0a0);
+    }
+
+    /* cute control buttons */
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      margin: 28px 0 18px;
+    }
+
+    .ctrl-btn {
+      background: white;
+      border: none;
+      width: 58px;
+      height: 58px;
+      border-radius: 40px;
+      font-size: 26px;
+      color: #b34e5a;
+      box-shadow: 0 10px 0 #e88e9b, 0 12px 22px #ffb6b6, 0 4px 0 white inset, 0 -3px 8px rgba(0,0,0,0.02);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.05s ease;
+      border: 2px solid #ffe9f0;
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(8px);
+      box-shadow: 0 2px 0 #e07a8a, 0 12px 22px #ffa5aa;
+    }
+
+    .ctrl-btn i {
+      filter: drop-shadow(0 4px 4px rgba(255,150,150,0.4));
+    }
+
+    .ctrl-btn.play-pause {
+      background: #ff4f6b;
+      color: white;
+      width: 74px;
+      height: 74px;
+      font-size: 34px;
+      box-shadow: 0 12px 0 #a13348, 0 20px 30px #ff9292;
+    }
+
+    .ctrl-btn.play-pause i {
+      filter: drop-shadow(0 6px 6px #57001a);
+    }
+
+    /* playlist mini */
+    .playlist {
+      background: rgba(255, 250, 245, 0.7);
+      border-radius: 32px;
+      padding: 18px 16px;
+      margin-top: 18px;
+      backdrop-filter: blur(6px);
+      border: 2px solid #ffdde4;
+    }
+
+    .playlist h3 {
+      font-family: 'Caveat', cursive;
+      color: #c1475a;
+      font-size: 24px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .playlist h3 i {
+      font-size: 22px;
+      color: #ff6b85;
+    }
+
+    .song-list {
+      list-style: none;
+    }
+
+    .song-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 40px;
+      background: rgba(255, 233, 236, 0.6);
+      margin-bottom: 8px;
+      border: 1.5px solid transparent;
+      transition: 0.1s;
+      color: #76444c;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .song-item.active {
+      background: #ffe2e7;
+      border: 1.5px solid #ff859c;
+      box-shadow: 0 4px 8px #ffc6ce;
+      color: #a12a40;
+    }
+
+    .song-item i {
+      font-size: 20px;
+      margin-right: 14px;
+      color: #ff4f6b;
+      text-shadow: 0 2px 4px #ffb6c1;
+    }
+
+    .song-info-item {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .song-name {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .song-artist {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    .love-tag {
+      background: #ffc0cb;
+      border-radius: 30px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #6d1e2b;
+    }
+
+    /* tiny heart */
+    .tiny-heart {
+      position: absolute;
+      bottom: 10px;
+      right: 25px;
+      opacity: 0.6;
+      font-size: 20px;
+      color: #ff8c9c;
+    }
+
+    /* responsive */
+    @media (max-width: 450px) {
+      .player-card { padding: 22px 18px; }
+      .valentine-text h1 { font-size: 30px; }
+    }
