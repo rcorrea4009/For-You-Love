@@ -35,24 +35,27 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 120px;
+            height: 320px; /* Increased to fit 300px chibis */
             pointer-events: none;
             z-index: 100;
             overflow: hidden;
         }
-        
+
         .chibi {
-            width: 300px;           /* Adjust this to change character size */
+            width: 300px; 
             height: 300px;
             position: fixed;
-            bottom: 20px;
+            bottom: 0; /* Sit right on the bottom edge */
             background-repeat: no-repeat;
-            background-size: 300% 100%; /* This "zooms" the sheet so 1 frame fits the box */
+            /* 300% width because your sheet has 3 frames per row */
+            background-size: 300% auto; 
             z-index: 1000;
-            transition: transform 0.5s;
+            transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
             cursor: pointer;
+            pointer-events: auto; /* Allow clicking/hovering */
+            image-rendering: pixelated; /* Keeps the art sharp */
         }
-        
+
         .chibi:hover {
             transform: scale(1.1);
         }
@@ -508,54 +511,313 @@
             line-height: 1.6;
         }
         
-        /* Page 5 - Postcard */
-        .postcard-page {
+        /* Page 5 - Long Distance Love Coupons */
+        .coupons-page {
+            padding: 20px 10px;
+            position: relative;
+            background: linear-gradient(145deg, #FFF9F0, #FFFCF5);
+            border-radius: 20px;
+        }
+
+        .coupon-envelope {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+            color: #5D4037;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .coupon-envelope i {
+            color: #D32F2F;
+            margin-right: 10px;
+            font-size: 2rem;
+            vertical-align: middle;
+        }
+
+        .coupons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+            justify-content: center;
+        }
+
+        .coupon-card {
+            background: linear-gradient(145deg, #FFFFFF, #FFF5F0);
+            border: 2px solid #FFB6B6;
+            border-radius: 20px;
+            padding: 25px 20px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(211, 47, 47, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             text-align: center;
         }
-        
-        .postcard {
-            background-color: #FFFAF0;
-            width: 100%;
-            max-width: 500px;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            border: 15px solid #FFEBEE;
-            position: relative;
+
+        .coupon-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 20px 30px rgba(211, 47, 47, 0.2);
+            border-color: #D32F2F;
         }
-        
-        .postcard h2 {
-            font-size: 2.5rem;
-            color: #D32F2F;
-            margin-bottom: 20px;
+
+        .coupon-card.redeemed {
+            opacity: 0.8;
+            background: linear-gradient(145deg, #F5F5F5, #FAFAFA);
+            border-color: #BCAAA4;
+            cursor: default;
+            pointer-events: none;
+            filter: grayscale(0.3);
         }
-        
-        .postcard-message {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: #5D4037;
-            margin-bottom: 30px;
+
+        .coupon-card.redeemed .coupon-icon i,
+        .coupon-card.redeemed h3,
+        .coupon-card.redeemed .coupon-description {
+            opacity: 0.7;
         }
-        
-        .postcard-stamp {
+
+        .coupon-ribbon {
             position: absolute;
-            top: -50px;
-            right: -15px;
-            width: 80px;
-            height: 80px;
-            background-color: #D32F2F;
+            top: 15px;
+            left: -30px;
+            background: #D32F2F;
+            color: white;
+            padding: 5px 30px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(-45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+
+        .coupon-stamp {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            background: rgba(211, 47, 47, 0.1);
+            border: 2px dashed #D32F2F;
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            color: white;
-            font-weight: bold;
+            justify-content: center;
+            color: #D32F2F;
             font-size: 1.2rem;
-            border: 3px dashed white;
+            transform: rotate(15deg);
+        }
+
+        .coupon-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #D32F2F, #F44336);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+            border: 3px solid #FFEBEE;
+        }
+
+        .coupon-card h3 {
+            color: #5D4037;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            border-bottom: 2px dashed #FFB6B6;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+        .coupon-description {
+            color: #5D4037;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .distance-note {
+            background: #FFEBEE;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            color: #D32F2F;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .distance-note i {
+            margin-right: 5px;
+        }
+
+        .coupon-details {
+            background: #FFF9E6;
+            padding: 12px;
+            border-radius: 15px;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 0.8rem;
+            border: 1px solid #FFD700;
+        }
+
+        .coupon-expiry {
+            display: block;
+            color: #8D6E63;
+            margin-bottom: 5px;
+        }
+
+        .coupon-code {
+            display: inline-block;
+            background: #5D4037;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .coupon-footer {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .coupon-redeem {
+            display: inline-block;
+            background: #D32F2F;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            box-shadow: 0 3px 8px rgba(211, 47, 47, 0.2);
+        }
+
+        .coupon-card:hover .coupon-redeem {
+            background: #B71C1C;
+            transform: scale(1.05);
+        }
+
+        .coupon-used {
+            display: inline-block;
+            background: #388E3C;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        .coupon-heart {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 1.2rem;
+            opacity: 0.3;
+            color: #D32F2F;
+            animation: pulse 2s infinite;
+        }
+
+        .coupon-message {
+            text-align: center;
+            background: linear-gradient(145deg, #D32F2F, #F44336);
+            color: white;
+            padding: 15px;
+            border-radius: 30px;
+            margin: 20px auto;
+            max-width: 400px;
+            font-size: 1.1rem;
+            animation: slideIn 0.5s ease;
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .coupon-message i {
+            margin-right: 8px;
+        }
+
+        .ldr-note {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 235, 238, 0.7);
+            border-radius: 50px;
+            color: #5D4037;
+            font-size: 1.1rem;
+            font-style: italic;
+            border: 2px dashed #D32F2F;
+            backdrop-filter: blur(5px);
+        }
+
+        .ldr-note i {
+            color: #D32F2F;
+            margin: 0 8px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .coupons-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .coupon-card {
+                padding: 20px 15px;
+            }
+            
+            .coupon-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+            
+            .coupon-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .coupon-ribbon {
+                font-size: 0.7rem;
+                padding: 4px 25px;
+            }
+            
+            .ldr-note {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .coupon-stamp {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .coupon-code {
+                font-size: 0.65rem;
+            }
         }
         
         /* Page 6 - Video Messages */
